@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Jul 07, 2022 at 10:04 AM
--- Server version: 5.7.34
--- PHP Version: 8.0.8
+-- Host: localhost
+-- Generation Time: Jul 27, 2022 at 11:43 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,11 +47,11 @@ CREATE TABLE `kk_blogs` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_category` int(11) DEFAULT NULL,
   `tags` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `published_on` datetime NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `published_on` datetime DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_keyword` text COLLATE utf8mb4_unicode_ci,
   `meta_description` text COLLATE utf8mb4_unicode_ci,
-  `status` tinyint(4) NOT NULL,
+  `status` tinyint(4) DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -61,7 +62,12 @@ CREATE TABLE `kk_blogs` (
 --
 
 INSERT INTO `kk_blogs` (`id`, `id_category`, `tags`, `published_on`, `slug`, `meta_keyword`, `meta_description`, `status`, `image`, `created_at`, `updated_at`) VALUES
-(1, 10, 'a:1:{i:0;s:6:\"hastag\";}', '2022-07-07 16:15:50', 'news-sampling', 'News Sampling', 'News Sampling', 1, 'slide2.png', '2022-07-07 09:16:59', '2022-07-07 09:17:00');
+(1, 1, 'kemantapan menteri kelautan', '2022-07-29 00:00:00', 'kemantapan-menteri-kelautan', 'menteri kelautan ibu susi puja astuti memiliki prestasi besar dalam menangani dan mengelola sumber daya maritim indonesia', 'menteri kelautan ibu susi puja astuti memiliki prestasi besar dalam menangani dan mengelola sumber daya maritim indonesia', 1, 'kelautan.jpg', NULL, NULL),
+(6, 4, 'jangan pakai narkoba', '2022-05-12 00:00:00', 'jangan-pakai-narkoba', '12:30', 'januhi narkoba dekati ibadah', 1, NULL, '2022-07-27 09:16:53', '2022-07-27 09:16:53'),
+(7, 4, 'pahlawan tanpa tanda jasa', '2005-05-05 00:00:00', 'pahlawan-tanpa-tanda-jasa', 'guru adalalh pahlawan tanpa tanda jasa', 'tahukan kalian siapa saja yang termasuk kategori pahlawah selain pejuang kemerdekaan. yang benar itu adalah guru, guru adalah pahlawan tanpa tanda jasa', 1, NULL, '2022-07-27 09:21:10', '2022-07-27 09:46:49'),
+(8, 4, 'pahlawan tanpa tanda jasa', '2005-05-05 00:00:00', 'pahlawan-tanpa-tanda-jasa', 'guru adalalh pahlawan tanpa tanda jasa', 'tahukan kalian siapa saja yang termasuk kategori pahlawah selain pejuang kemerdekaan. yang benar itu adalah guru, guru adalah pahlawan tanpa tanda jasa', 1, NULL, '2022-07-27 10:08:05', '2022-07-27 10:08:05'),
+(9, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '2022-07-27 10:10:28', '2022-07-27 10:10:28'),
+(10, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '2022-07-27 10:14:20', '2022-07-27 10:14:20');
 
 -- --------------------------------------------------------
 
@@ -75,14 +81,6 @@ CREATE TABLE `kk_blog_descriptions` (
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `kk_blog_descriptions`
---
-
-INSERT INTO `kk_blog_descriptions` (`blog_id`, `language_id`, `title`, `description`) VALUES
-(1, 'id', 'Berita Sampling', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'),
-(1, 'en', 'News Sampling', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
 
 -- --------------------------------------------------------
 
@@ -169,7 +167,7 @@ CREATE TABLE `kk_infobox` (
 --
 
 INSERT INTO `kk_infobox` (`id`, `title`, `link`, `image`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 'Selamat Datang Di Perisai Sistem Management', 'http://127.0.0.1:8000/login', '1657185522.png', 'on', NULL, '2022-07-07 09:18:42', NULL, 3);
+(1, 'E - Telly Sistem Management | Maritime Bussines Connected', 'http://127.0.0.1:8000/login', '1657733456.png', 'on', NULL, '2022-07-13 17:30:56', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -204,6 +202,83 @@ INSERT INTO `kk_ms_contact` (`id`, `name`, `email`, `phone`, `subject`, `message
 (9, 'udin', 'udin@mail.com', '+6287770164', 'tanya jadwal dokter', 'jadwal dokter kapan ya ?', '2022-06-26 12:57:06', 'Y', '127.0.0.1', '2022-06-26 05:57:06', '2022-06-26 05:57:39', 3),
 (10, 'udin', 'udin@mail.com', '+6287770164', 'ssws', '3jirhqwjkebjqw', '2022-06-26 12:58:04', 'N', '127.0.0.1', '2022-06-26 05:58:04', '2022-06-26 05:58:04', NULL),
 (11, 'jadir', 'jadirullah@gmail.com', '0210020', 'test aja', 'dwdwdwdwd', '2022-06-26 13:01:33', 'N', '127.0.0.1', '2022-06-26 06:01:33', '2022-06-26 06:01:33', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kk_ms_from_to`
+--
+
+CREATE TABLE `kk_ms_from_to` (
+  `id` int(11) NOT NULL,
+  `location` varchar(250) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `kk_ms_from_to`
+--
+
+INSERT INTO `kk_ms_from_to` (`id`, `location`, `description`, `created_at`, `updated_at`, `created_by`, `updated_by`, `status`) VALUES
+(1, 'Kapal', 'Kapal', NULL, NULL, NULL, NULL, 1),
+(2, 'Dermaga', 'Dermaga', NULL, NULL, NULL, NULL, 1),
+(3, 'Terminal', 'Terminal', NULL, NULL, NULL, NULL, 1),
+(4, 'Jetty 1', 'Jetty 1', NULL, NULL, NULL, NULL, 1),
+(5, 'XXX edited', 'ssss ddd', '2022-07-19 08:55:14', '2022-07-19 08:55:25', 3, 3, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kk_ms_product`
+--
+
+CREATE TABLE `kk_ms_product` (
+  `id` bigint(20) NOT NULL,
+  `product_code` char(20) DEFAULT NULL,
+  `product_name` varchar(500) DEFAULT NULL,
+  `bill_of_lading_id` int(11) DEFAULT NULL,
+  `product_satuan` int(11) DEFAULT NULL,
+  `product_category` int(11) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
+  `status_product` enum('watlist','proses','finish') DEFAULT 'proses',
+  `from_moving` varchar(200) DEFAULT NULL,
+  `to_moving` varchar(200) DEFAULT NULL,
+  `description_moving` varchar(500) DEFAULT NULL,
+  `image_moving` varchar(500) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `kk_ms_product`
+--
+
+INSERT INTO `kk_ms_product` (`id`, `product_code`, `product_name`, `bill_of_lading_id`, `product_satuan`, `product_category`, `total`, `status_product`, `from_moving`, `to_moving`, `description_moving`, `image_moving`, `created_at`, `updated_at`, `created_by`, `updated_by`, `status`) VALUES
+(1, 'PR-00001', 'Suzuki Pickup', 1, 1, 1, 200, 'finish', 'Ship Priok', 'Dermaga 01', 'Barang Good Moving', '1657871683.png', NULL, '2022-07-15 07:54:43', NULL, NULL, 1),
+(3, 'PR-00002', 'Toyota Yaris', 1, 1, 1, 200, 'proses', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(4, '2', 'Truk Skania', 1, 1, 2, NULL, 'proses', NULL, NULL, NULL, NULL, '2022-07-15 19:11:06', '2022-07-15 19:11:06', 3, NULL, 1),
+(5, '1508381314', 'Truk 3', 1, 2, 2, NULL, 'proses', NULL, NULL, NULL, NULL, '2022-07-15 19:12:34', '2022-07-15 19:12:34', 3, NULL, 1),
+(7, 'SM0023', 'MITSHUBISI L300', 8, 2, 2, 500, 'proses', 'ship bau bau', 'degmage', 'good condition object', '/tmp/phpFvKqEx', '2022-07-27 03:51:19', '2022-07-27 03:51:19', NULL, NULL, 1),
+(8, 'SM0023', 'MITSHUBISI L300', 8, 2, 2, 500, 'proses', 'ship bau bau', 'degmage', 'good condition object', '/tmp/phpLVYSAo', '2022-07-27 03:52:36', '2022-07-27 03:52:36', NULL, NULL, 1),
+(9, 'SM02983', 'MITSHUBISI SPANDER', 8, 2, 2, 500, 'finish', 'ship bau bau', 'degmage', 'good condition object', '/tmp/phpfwTdY3', '2022-07-27 03:53:27', '2022-07-27 03:53:27', NULL, NULL, 1),
+(10, 'SM0023451', 'HINO TRUCK1', 8, 21, 4, 12001, 'finish', 'japan1', 'tg. priok1', 'good condition object1', '134208-mac7.jpg', '2022-07-27 04:57:58', '2022-07-27 06:42:58', NULL, NULL, 1),
+(11, 'SAM90837', 'TOYOTA AGYA DELUX', 8, 3, 2, 400, 'proses', 'japan', 'tg. priok', 'good condition object', '120238-apple_gradient.png', '2022-07-27 05:02:38', '2022-07-27 05:02:38', NULL, NULL, 1),
+(12, 'SM002345', 'HINO TRUCK', 8, 2, 2, 200, 'proses', 'japan', 'tg. priok', 'good condition object', '132424-apple_grey.png', '2022-07-27 06:24:24', '2022-07-27 06:24:24', NULL, NULL, 1),
+(13, 'SM002345', 'HINO TRUCK', 8, 2, 2, 200, 'proses', 'japan 1', 'tg. priok', 'good condition', '132558-da.jpg', '2022-07-27 06:25:58', '2022-07-27 06:40:04', NULL, NULL, 1),
+(14, 'SM002345', 'HINO TRUCK', 8, 2, 2, 200, 'proses', 'japan', 'tg. priok', 'good condition object', '132726-linux-mint-logo.svg', '2022-07-27 06:27:26', '2022-07-27 06:27:26', NULL, NULL, 1),
+(15, 'SM002345', 'HINO TRUCK', 8, 2, 2, 200, 'proses', 'japan', 'tg. priok', 'good condition object', '132917-da.jpg', '2022-07-27 06:29:17', '2022-07-27 06:29:17', NULL, NULL, 1),
+(16, 'SM002345', 'HINO TRUCK', 8, 2, 2, 200, 'proses', 'japan', 'tg. priok', 'good condition', '133002-da.jpg', '2022-07-27 06:30:02', '2022-07-27 06:30:02', NULL, NULL, 1),
+(17, 'AB707090', 'IZUZU FORKLIP DELUX', 1, 3, 4, 200, 'proses', 'KAIRO', 'MALAYSIA', 'keep safety myself DEFENCE', '155540-da.jpg', '2022-07-27 08:55:40', '2022-07-27 09:01:37', NULL, NULL, 1),
+(18, 'AB0009', 'daihatsu ayla delux', 1, 2, 3, 90, 'proses', 'japan2', 'indonesia2', 'good condition2', '040455-cepot.jpg', '2022-07-27 21:02:57', '2022-07-27 21:04:55', NULL, NULL, 1),
+(19, 'AB00001', 'honde pcx', 9, 3, 2, 30, 'proses', 'srilanka', 'priok', 'object safety right', '041302-mac11.jpg', '2022-07-27 21:11:08', '2022-07-27 21:13:02', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -302,14 +377,6 @@ CREATE TABLE `kk_slideshows` (
   `target` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `kk_slideshows`
---
-
-INSERT INTO `kk_slideshows` (`id`, `status`, `sort_order`, `image`, `created_at`, `updated_at`, `url`, `target`) VALUES
-(1, 1, 1, 'slide-official.png', '2022-06-27 06:16:56', '2022-06-27 06:16:57', '#', 1),
-(2, 1, 2, 'ambulance-slide.png', '2022-06-27 08:28:51', '2022-06-27 08:28:52', '#', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -323,14 +390,6 @@ CREATE TABLE `kk_slideshow_descriptions` (
   `subtitle` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `button_text` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `kk_slideshow_descriptions`
---
-
-INSERT INTO `kk_slideshow_descriptions` (`slideshow_id`, `language_id`, `title`, `subtitle`, `button_text`) VALUES
-(1, 'id', ' ', NULL, '#'),
-(2, 'id', ' ', NULL, ' ');
 
 -- --------------------------------------------------------
 
@@ -416,6 +475,84 @@ INSERT INTO `kk_testimonial` (`id`, `name`, `subtitle`, `photo`, `text`, `create
 (1, 'Jadir', 'CEO Idetechno', '1656503846.png', 'Rs. Bhakti Husada CIkarang, Top Pelayananya, greatfull , pertahankan .', '2022-06-29 11:57:26', '2022-06-29 11:57:26', 3, NULL, 1),
 (2, 'Udin', 'Direktur Samsung', '1656511869.png', 'Keren euy, pertahankan', '2022-06-29 14:11:09', '2022-06-29 14:11:09', 3, NULL, 1),
 (3, 'Sutiono', 'Direktour Honda', '1656511960.jpg', 'Mantap... Layanan Joss', '2022-06-29 14:12:40', '2022-06-29 14:12:40', 3, NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kk_tr_bill_of_lading`
+--
+
+CREATE TABLE `kk_tr_bill_of_lading` (
+  `id` int(11) NOT NULL,
+  `id_manfest` int(11) NOT NULL,
+  `kode_bill_of_lading` varchar(20) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `transfer_to` varchar(200) DEFAULT NULL,
+  `ship_name` varchar(200) DEFAULT NULL,
+  `country` varchar(200) DEFAULT NULL,
+  `date_of_bill` date DEFAULT NULL,
+  `telly_man` varchar(200) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `kk_tr_bill_of_lading`
+--
+
+INSERT INTO `kk_tr_bill_of_lading` (`id`, `id_manfest`, `kode_bill_of_lading`, `customer_id`, `transfer_to`, `ship_name`, `country`, `date_of_bill`, `telly_man`, `created_at`, `updated_at`, `status`) VALUES
+(1, 1, 'BL-0000001', 1, 'Dermaga1', 'Ship Container1', 'Panama1', '2001-01-01', 'Mr. Shuhaimin1', NULL, '2022-07-27 21:08:41', 1),
+(2, 1, 'BL-00000029', 39, 'Port Belawan9', 'Ship Hopper9', 'Italia9', '2022-09-25', 'Mr. Amin9', NULL, '2022-07-26 04:34:01', 1),
+(3, 1, 'BL-0000003', 1, 'Dermaga', 'Ship Tangker', 'Belanda', '2022-07-30', 'Mr. Amin', NULL, NULL, 1),
+(5, 1, 'BL-0000004', 4, 'pelabuhan', 'ship container', 'boulivia', '2022-07-29', 'Mr. Amir', '2022-07-26 03:48:32', '2022-07-26 03:48:32', 1),
+(6, 2, 'BL-00000012', 22, 'Dermaga2', 'Ship Container2', 'saudi arabian', '2022-07-30', 'Mr. Amin2', '2022-07-26 04:32:31', '2022-07-26 22:34:15', 1),
+(7, 1, 'BL-00000022', 23, 'Dermaga2', 'Ship Hopper9', 'brazil', '2022-07-21', 'Mr. Amin3', '2022-07-26 09:36:06', '2022-07-26 09:36:06', 1),
+(8, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-07-26 21:26:21', '2022-07-26 21:26:21', 1),
+(9, 1, 'm3', 3, 'palabuhan3', 'ship3', 'Panama3', '2003-03-03', 'Mr. Amin3', '2022-07-27 10:31:41', '2022-07-27 10:32:10', 1),
+(10, 1, 'BL-00000017', 2, 'Dermaga', 'ship container', 'japan', '2022-07-31', 'Mr.Sudin', '2022-07-27 20:41:47', '2022-07-27 20:41:47', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kk_tr_manifest`
+--
+
+CREATE TABLE `kk_tr_manifest` (
+  `id` int(11) NOT NULL,
+  `kode_manifest` varchar(20) DEFAULT NULL,
+  `country` varchar(200) DEFAULT NULL,
+  `id_customer` int(11) DEFAULT NULL,
+  `date_of` date DEFAULT NULL,
+  `port_name` varchar(45) DEFAULT NULL,
+  `vassel_id` int(10) NOT NULL,
+  `ship_agent_id` int(10) NOT NULL,
+  `stevedoring_id` int(10) NOT NULL,
+  `voy` varchar(225) NOT NULL,
+  `berth_no` varchar(225) NOT NULL,
+  `berthed_on` varchar(225) NOT NULL,
+  `berthed_on_hours` time NOT NULL,
+  `departed_on` date NOT NULL,
+  `departed_on_hours` time NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `kk_tr_manifest`
+--
+
+INSERT INTO `kk_tr_manifest` (`id`, `kode_manifest`, `country`, `id_customer`, `date_of`, `port_name`, `vassel_id`, `ship_agent_id`, `stevedoring_id`, `voy`, `berth_no`, `berthed_on`, `berthed_on_hours`, `departed_on`, `departed_on_hours`, `created_at`, `updated_at`, `created_by`, `updated_by`, `status`) VALUES
+(1, 'MNFS00001', 'Arab Saudi', 1, '2022-05-22', 'Tanjung Priok', 0, 0, 0, '', '', '', '00:00:00', '0000-00-00', '00:00:00', NULL, NULL, NULL, NULL, 1),
+(2, 'MNFS00002', 'Inggris', 2, '2022-07-01', 'Ciwandan Banten', 14, 6, 4, 'bread ship', 'saudi arabia', 'bau bau', '00:00:00', '2022-07-30', '00:00:00', NULL, '2022-07-26 21:07:29', NULL, NULL, 1),
+(4, 'NMY000031', 'japan1', 31, '2022-07-31', 'blinyu1', 16, 3, 3, 'distric1', 'japan dermage1', 'blinyu1', '01:34:00', '2022-07-31', '14:30:00', '2022-07-26 01:28:16', '2022-07-26 02:43:23', NULL, NULL, 1),
+(5, 'MSI0012', 'brazil2', 52, '2022-02-02', 'buton2', 16, 3, 3, 'meratus2', 'dermage braze2', 'bau bau2', '02:39:00', '2022-03-31', '02:46:00', '2022-07-26 02:46:55', '2022-07-26 02:50:03', NULL, NULL, 1),
+(6, 'MNSF00003', 'japan', 31, '2022-07-29', 'buton', 13, 5, 2, 'meratus', 'dermage braze', 'blinyu', '02:02:00', '2022-07-30', '01:00:00', '2022-07-26 09:01:43', '2022-07-26 09:01:43', NULL, NULL, 1),
+(7, 'MNSF000039', 'saudi arabia9', 2, '2009-09-09', 'blinyu9', 18, 6, 7, 'derstac9', 'dermage braze9', 'bau bau9', '09:00:00', '2008-09-09', '09:00:00', '2022-07-27 10:27:43', '2022-07-27 10:30:33', NULL, NULL, 1),
+(8, 'MNS00002', 'carabia2', 3, '2002-02-02', 'blinyu2', 18, 6, 7, 'meratus2', 'dermage priok2', 'bau bau2', '02:02:00', '2012-02-02', '14:02:00', '2022-07-27 20:23:21', '2022-07-27 20:28:52', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -553,9 +690,94 @@ CREATE TABLE `ms_bank` (
 
 INSERT INTO `ms_bank` (`id`, `bank_name`, `bank_rekening`, `atas_nama`, `bank_logo`, `created_at`, `updated_at`, `created_by`, `updated_by`, `status`) VALUES
 (1, 'BRI Syariah', '8888888', 'Gunawan LC', '1627582961.jpg', NULL, '2022-01-27 17:49:39', NULL, 3, 0),
-(2, 'Mandiri Syariah', '00000001', 'Jadirullah', '1657184935.png', '2021-07-29 18:11:05', '2022-07-07 09:08:55', 3, 3, 1),
+(2, 'Mandiri Syariah', '00000001', 'PT Angin', '1657184935.png', '2021-07-29 18:11:05', '2022-07-13 17:34:39', 3, 3, 1),
 (3, 'BTN', '0102010928019', 'Gunawan LC', '1628367345.png', '2021-08-07 20:15:45', '2022-01-27 17:49:44', 3, 3, 0),
 (4, 'BCA', '1019028190', 'Gunawan LC', '1628367396.jpg', '2021-08-07 20:16:36', '2022-01-27 17:49:41', 3, 3, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ms_customer`
+--
+
+CREATE TABLE `ms_customer` (
+  `id` int(11) NOT NULL,
+  `customer_name` varchar(100) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `logo` varchar(45) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ms_customer`
+--
+
+INSERT INTO `ms_customer` (`id`, `customer_name`, `phone`, `address`, `email`, `logo`, `created_at`, `updated_at`, `created_by`, `updated_by`, `status`) VALUES
+(1, 'PT Indo Istime Samudra', '021020102', 'Tanjung Priok, Jakarta, Indonesia', 'istimewa@gmail.com', 'logo.png', NULL, NULL, NULL, NULL, 1),
+(2, 'PT Multi Samudra Lautan', '0210200102', 'Bekasi, jawa Barat, Indonesia', 'multi@gmail.com', 'logo.png', NULL, NULL, NULL, NULL, 1),
+(3, 'PT JNE Indonesia', '02219120890', 'Bandung, Jawa Barat, Indonesia', 'bandung@gmail.com', NULL, NULL, NULL, NULL, NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ms_product_category`
+--
+
+CREATE TABLE `ms_product_category` (
+  `id` int(11) NOT NULL,
+  `category_product` varchar(150) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ms_product_category`
+--
+
+INSERT INTO `ms_product_category` (`id`, `category_product`, `description`, `created_at`, `updated_at`, `created_by`, `updated_by`, `status`) VALUES
+(1, 'Cair', 'Cair', NULL, '2022-07-15 10:15:58', NULL, 3, 1),
+(2, 'Padat', 'Padat', NULL, '2022-07-15 10:16:25', NULL, 3, 1),
+(3, 'Gas', 'Gas', NULL, '2022-07-15 10:16:40', NULL, 3, 1),
+(4, 'Danger Goods', 'Danger Goods', NULL, '2022-07-15 10:16:34', NULL, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ms_satuan`
+--
+
+CREATE TABLE `ms_satuan` (
+  `id` int(11) NOT NULL,
+  `satuan_name` varchar(150) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ms_satuan`
+--
+
+INSERT INTO `ms_satuan` (`id`, `satuan_name`, `description`, `created_at`, `updated_at`, `created_by`, `updated_by`, `status`) VALUES
+(1, 'PCS', 'PCS', NULL, '2022-07-15 08:54:35', NULL, 3, 1),
+(2, 'LUSIN', 'Lusin', NULL, '2022-07-15 08:54:21', NULL, 3, 1),
+(3, 'GROS', 'Gros', NULL, '2022-07-15 08:54:00', NULL, 3, 1),
+(4, 'KODI', 'Kodi', NULL, '2022-07-15 08:54:08', NULL, 3, 1),
+(5, 'Liter', 'Liter', '2022-07-15 08:49:06', '2022-07-15 08:49:06', 3, NULL, 1),
+(6, 'BOX', 'Box', '2022-07-15 08:54:29', '2022-07-15 08:54:29', 3, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -601,6 +823,23 @@ INSERT INTO `ms_users_description` (`id`, `users_id`, `type_user`, `nama_depan`,
 (32, 38, 'perusahaan', 'Mr bara', NULL, NULL, NULL, '02010201002', 'Priok Jakut', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'PT Export Indonesia', NULL, NULL, NULL, '2022-01-16 14:35:43', '2022-01-16 14:35:43', 38, NULL, 1),
 (33, 39, 'perusahaan', 'fathur', NULL, NULL, NULL, '+6287770164', 'Medan, Sumatera Itara', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Shorum Maju Terus', NULL, NULL, NULL, '2022-01-18 06:10:30', '2022-01-18 06:10:30', 39, NULL, 1),
 (34, 40, NULL, 'jadir', 'ullah', NULL, 'pria', '+6287887177736', 'Bekasi, Jawa Barat', NULL, NULL, 'bekasi', '1990-01-01', NULL, NULL, NULL, 'PT Maju Mundur', 'bekasi, jawa barat', '021012901290', 'majumundur@mail.com', '2022-01-25 02:48:52', '2022-01-25 03:09:10', 40, 40, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ms_volume`
+--
+
+CREATE TABLE `ms_volume` (
+  `id` int(11) NOT NULL,
+  `jenis_volume` varchar(150) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -697,7 +936,23 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (194, 'inbox-index', 'web', '2022-01-10 16:54:09', '2022-01-10 16:54:09', 3, NULL),
 (195, 'inbox-show', 'web', '2022-01-10 17:14:27', '2022-01-10 17:14:27', 3, NULL),
 (228, 'infobox-index', 'web', '2022-06-27 09:16:46', '2022-06-27 09:16:46', 3, NULL),
-(229, 'infobox-update', 'web', '2022-06-27 09:16:54', '2022-06-27 09:16:54', 3, NULL);
+(229, 'infobox-update', 'web', '2022-06-27 09:16:54', '2022-06-27 09:16:54', 3, NULL),
+(230, 'satuan-index', 'web', '2022-07-15 08:28:55', '2022-07-15 08:28:55', 3, NULL),
+(231, 'satuan-create', 'web', '2022-07-15 08:28:59', '2022-07-15 08:28:59', 3, NULL),
+(232, 'satuan-update', 'web', '2022-07-15 08:29:04', '2022-07-15 08:29:04', 3, NULL),
+(233, 'satuan-delete', 'web', '2022-07-15 08:29:09', '2022-07-15 08:29:09', 3, NULL),
+(234, 'product_category-index', 'web', '2022-07-15 08:56:03', '2022-07-15 08:56:03', 3, NULL),
+(235, 'product_category-create', 'web', '2022-07-15 08:56:08', '2022-07-15 08:56:08', 3, NULL),
+(236, 'product_category-update', 'web', '2022-07-15 08:56:13', '2022-07-15 08:56:13', 3, NULL),
+(237, 'product_category-delete', 'web', '2022-07-15 08:56:18', '2022-07-15 08:56:18', 3, NULL),
+(238, 'location-index', 'web', '2022-07-19 08:38:03', '2022-07-19 08:38:03', 3, NULL),
+(239, 'location-create', 'web', '2022-07-19 08:38:09', '2022-07-19 08:38:09', 3, NULL),
+(240, 'location-update', 'web', '2022-07-19 08:38:14', '2022-07-19 08:38:14', 3, NULL),
+(241, 'location-delete', 'web', '2022-07-19 08:38:20', '2022-07-19 08:38:20', 3, NULL),
+(243, 'ship_agent-index', 'web', '2022-07-25 16:11:36', '2022-07-26 05:47:42', 1, 3),
+(244, 'vassel-index', 'web', '2022-07-26 01:11:17', '2022-07-26 01:11:17', 3, NULL),
+(245, 'manifest-create', 'web', '2022-07-26 01:42:14', '2022-07-26 01:42:14', 3, NULL),
+(246, 'stevedoring-index', 'web', '2022-07-26 18:34:28', '2022-07-26 18:37:12', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -739,28 +994,27 @@ CREATE TABLE `role_has_permissions` (
 --
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(150, 1),
+(151, 1),
+(152, 1),
+(153, 1),
+(117, 1),
+(118, 1),
+(119, 1),
+(120, 1),
+(170, 1),
+(171, 1),
+(172, 1),
+(173, 1),
 (1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 1),
-(10, 1),
-(11, 1),
-(12, 1),
-(14, 1),
-(15, 1),
-(16, 1),
-(17, 1),
-(18, 1),
-(19, 1),
-(105, 1),
-(106, 1),
-(107, 1),
-(108, 1),
+(194, 1),
+(195, 1),
+(228, 1),
+(229, 1),
+(238, 1),
+(239, 1),
+(240, 1),
+(241, 1),
 (109, 1),
 (110, 1),
 (111, 1),
@@ -769,39 +1023,55 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (114, 1),
 (115, 1),
 (116, 1),
-(117, 1),
-(118, 1),
-(119, 1),
-(120, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(234, 1),
+(235, 1),
+(236, 1),
+(237, 1),
+(16, 1),
+(17, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(230, 1),
+(231, 1),
+(232, 1),
+(233, 1),
+(18, 1),
+(19, 1),
+(243, 1),
+(105, 1),
+(106, 1),
+(107, 1),
+(108, 1),
+(246, 1),
 (121, 1),
 (122, 1),
 (123, 1),
 (124, 1),
+(174, 1),
+(175, 1),
+(176, 1),
+(177, 1),
 (145, 1),
 (146, 1),
 (147, 1),
 (148, 1),
 (149, 1),
-(150, 1),
-(151, 1),
-(152, 1),
-(153, 1),
-(170, 1),
-(171, 1),
-(172, 1),
-(173, 1),
-(174, 1),
-(175, 1),
-(176, 1),
-(177, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(14, 1),
+(15, 1),
+(244, 1),
+(192, 1),
 (190, 1),
 (191, 1),
-(192, 1),
-(193, 1),
-(194, 1),
-(195, 1),
-(228, 1),
-(229, 1);
+(193, 1);
 
 -- --------------------------------------------------------
 
@@ -827,11 +1097,11 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `type_setting`, `name`, `value`, `description`, `created_at`, `updated_at`, `created_by`, `updated_by`, `status`) VALUES
-(2, 'general', 'app_name', 'DPR - Perisai Management Sistem', 'Application Name', NULL, '2022-07-07 08:51:00', NULL, 3, 1),
-(3, 'general', 'app_desc', 'Perisai Management Sistem - DRPRI', 'web description', NULL, '2022-07-07 08:51:17', NULL, 3, 1),
-(4, 'general', 'office_name', 'DPRRI - Indonesia', 'Office name', NULL, '2022-07-07 08:51:36', NULL, 3, 1),
-(5, 'general', 'office_address', 'Jakarta Pusat, DKI Jakarta, Indonesia', 'Address', NULL, '2022-07-07 08:52:13', NULL, 3, 1),
-(8, 'system', 'logo', '1657183721_perisai-logo.png', 'Untuk Logo System', NULL, '2022-07-07 08:48:41', NULL, 3, 1),
+(2, 'general', 'app_name', 'E - Telly Sistem Management | Maritime Bussines Connected', 'Application Name', NULL, '2022-07-13 17:28:02', NULL, 3, 1),
+(3, 'general', 'app_desc', 'E - Telly Sistem Management | Maritime Bussines Connected', 'web description', NULL, '2022-07-13 17:28:07', NULL, 3, 1),
+(4, 'general', 'office_name', 'Tanjung Priok - Jakarta Utara - Indonesia', 'Office name', NULL, '2022-07-13 17:28:22', NULL, 3, 1),
+(5, 'general', 'office_address', 'Tanjung Priok - Jakarta Utara - Indonesia', 'Address', NULL, '2022-07-13 17:28:32', NULL, 3, 1),
+(8, 'system', 'logo', '1657733158_telly.png', 'Untuk Logo System', NULL, '2022-07-13 17:25:58', NULL, 3, 1),
 (12, 'system', 'dashboard_mode', 'light-mode', 'Untuk Tema Dashboard', NULL, '2022-06-05 05:56:10', NULL, 3, 1),
 (13, 'system', 'sidebar_mode', 'dark-sidebar', 'Untuk Mengganti Template Sidebar', NULL, '2022-05-11 16:42:07', NULL, 3, 1),
 (14, 'system', 'dashboard_boxed', 'n', 'Untuk Bentuk Aplikasi (Mini / Full)', NULL, '2021-02-02 15:32:47', NULL, 3, 1),
@@ -843,13 +1113,67 @@ INSERT INTO `setting` (`id`, `type_setting`, `name`, `value`, `description`, `cr
 (20, 'general', 'email_link', '#', 'address_link', NULL, '2022-07-07 08:52:46', NULL, 3, 1),
 (21, 'general', 'linkedin_link', '#', 'linkedin_link', NULL, '2022-07-07 08:52:55', NULL, 3, 1),
 (22, 'general', 'phone_link', '+6287887177736', 'phone_link', NULL, '2022-01-27 17:43:06', NULL, 3, 1),
-(23, 'general', 'footer_text', 'Hak Cipta © 2021 Bidang Sistem Informasi dan Infrastruktur Teknologi Informasi - Pusat Teknologi Informasi', 'footer_text', NULL, '2022-07-07 08:53:16', NULL, 3, 1),
-(25, 'general', 'front_app_title', 'Perisai Management Sistem - DRPRI', 'front_app_title', NULL, '2022-07-07 08:53:37', NULL, 3, 1),
+(23, 'general', 'footer_text', 'Hak Cipta © 2022 E-Telly Indonesia', 'footer_text', NULL, '2022-07-13 17:29:12', NULL, 3, 1),
+(25, 'general', 'front_app_title', 'E - Telly Sistem Management | Maritime Bussines Connected', 'front_app_title', NULL, '2022-07-13 17:29:32', NULL, 3, 1),
 (26, 'general', 'embed_maps', '#', NULL, NULL, '2022-01-27 17:38:08', NULL, 3, 1),
-(30, 'system', 'meta_keywords', 'DPR - Perisai Management Sistem', 'meta_keywords', NULL, '2022-07-07 08:49:24', NULL, 3, 1),
-(31, 'system', 'meta_description', 'DPR - Perisai Management Sistem', 'meta_description', NULL, '2022-07-07 08:49:36', NULL, 3, 1),
-(32, 'system', 'meta_title', 'DPR - Perisai Management Sistem', 'meta title for default', NULL, '2022-07-07 08:49:49', NULL, 3, 1),
-(33, 'system', 'future_image', '1657183819_perisai-logo.png', 'Untuk Future image Default', NULL, '2022-07-07 08:50:19', NULL, 3, 1);
+(30, 'system', 'meta_keywords', 'E - Telly Sistem Management | Maritime Bussines Connected', 'meta_keywords', NULL, '2022-07-13 17:27:01', NULL, 3, 1),
+(31, 'system', 'meta_description', 'E - Telly Sistem Management | Maritime Bussines Connected', 'meta_description', NULL, '2022-07-13 17:27:11', NULL, 3, 1),
+(32, 'system', 'meta_title', 'E - Telly Sistem Management | Maritime Bussines Connected', 'meta title for default', NULL, '2022-07-13 17:27:22', NULL, 3, 1),
+(33, 'system', 'future_image', '1657733255_telly.png', 'Untuk Future image Default', NULL, '2022-07-13 17:27:35', NULL, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ship_agents`
+--
+
+CREATE TABLE `ship_agents` (
+  `id` bigint(20) NOT NULL,
+  `nama_perusahaan` varchar(225) NOT NULL,
+  `telp` bigint(14) NOT NULL,
+  `alamat` varchar(225) NOT NULL,
+  `email` varchar(225) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ship_agents`
+--
+
+INSERT INTO `ship_agents` (`id`, `nama_perusahaan`, `telp`, `alamat`, `email`, `created_at`, `updated_at`) VALUES
+(5, 'pt mekar jaya', 8178781716, 'jl. kayu waringin jaya', 'mekar_jaya@yahoo.com', '2022-07-26 07:25:03', '2022-07-26 07:25:03'),
+(6, 'pt. berjaya niaga sakti', 812739283, 'jl. ahmad sukarjo', 'berjaya_niaga_sakti@gmail.com', '2022-07-26 07:26:25', '2022-07-26 07:26:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stevedoring`
+--
+
+CREATE TABLE `stevedoring` (
+  `id` bigint(20) NOT NULL,
+  `nama_perusahaan` varchar(225) NOT NULL,
+  `telp` bigint(14) NOT NULL,
+  `alamat` varchar(225) NOT NULL,
+  `email` varchar(225) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stevedoring`
+--
+
+INSERT INTO `stevedoring` (`id`, `nama_perusahaan`, `telp`, `alamat`, `email`, `created_at`, `updated_at`, `status`) VALUES
+(2, 'jaya setia', 8080, 'jl. rengas bandung', 'jayasetia@yahoo.com', '2022-07-25 15:33:02', '2022-07-25 15:33:02', 0),
+(3, 'media tama artamajaya', 812783927, 'jl. sukai harjo', 'media.tama.artamajaya@gmail.com', '2022-07-25 23:58:01', '2022-07-25 23:58:01', 0),
+(4, 'pt. maju jaya', 9082738, 'jl. siliwangi', 'maju_jaya@gmail.com', '2022-07-26 08:51:03', '2022-07-26 08:51:03', 0),
+(5, 'pt. aditya sejahtra', 8918273829, 'jl. cibitung', 'aditya_sejahtra@gmaii.com', '2022-07-26 08:51:06', '2022-07-26 08:51:06', 0),
+(6, 'pt. akina saya', 89208379, 'jl. dua dua', 'akina_saya@gmail.com', '2022-07-26 08:44:57', '2022-07-26 08:44:57', 1),
+(7, 'pt. sampurna mild', 8121212, 'jl. blitar', 'sampurna@yahoo.com', '2022-07-27 10:26:02', '2022-07-27 10:26:02', 1),
+(8, 'pt. perkasa utama', 81234, 'jl. teuku umar', 'perkasa.utama@gmail.com', '2022-07-27 21:38:43', '2022-07-27 21:38:43', 0);
 
 -- --------------------------------------------------------
 
@@ -880,11 +1204,42 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `activation_code`, `email_verified_at`, `verified_status`, `password`, `images`, `moto`, `remember_token`, `created_at`, `updated_at`, `status`, `created_by`, `updated_by`) VALUES
-(3, 'admin', 'admin@gmail.com', NULL, NULL, 1, '$2y$10$PZd/pUGE19mcaO0G.WXIJO5Ab2aP.77ezShX0lXQU/o7UJJI27DJG', 'perisai-logo.png', 'Hidup Adalah Pilihan', 'LgDeaYapQfshnhFdd5WTAwHihavuA0HsqsC9OlU7TTApslcnQr9K2qR82q9k', '2020-02-01 02:05:32', '2022-07-07 08:55:41', 1, NULL, NULL),
+(3, 'admin', 'admin@gmail.com', NULL, NULL, 1, '$2y$10$PZd/pUGE19mcaO0G.WXIJO5Ab2aP.77ezShX0lXQU/o7UJJI27DJG', 'telly.png', 'Hidup Adalah Pilihan', 'ZmVkMrcJZrPbVF1D2ftCEAH1JTAVJaRYnBM9HBqLMxvyMhQiiJsevjwj38sK', '2020-02-01 02:05:32', '2022-07-13 17:30:16', 1, NULL, NULL),
 (37, 'jadir', 'jadirullah1@gmail.com', NULL, '2021-08-10 04:51:53', 1, '$2y$10$ew3Pma4BWf10XxSfv2eToOGNEemUU/RTST9mZwKBJssdU504Sa.s2', 'default.png', NULL, 'sq2jQwvenGcHT4901ZapQ1D8yxBgQFlNyyHjNufMdlj0F1VvVK2j5I9yZzgZ', '2021-08-10 04:51:21', '2022-01-27 17:48:49', 2, NULL, NULL),
 (38, 'Mr bara', 'bara@gmail.com', 'nuaALOJCdeI9ehoYfUhX3o1WfTZS1duJwQP1KevFo8DzozXigH01OJkf9ujXbara@gmail.com', NULL, 0, '$2y$10$LWoYGFF1UwtkzhHWgfFEGuhHyeH4wnbGTmnGS6if9ozpDL149euUm', 'default.png', NULL, NULL, '2022-01-16 14:35:43', '2022-01-27 17:48:54', 2, NULL, NULL),
 (39, 'fathur', 'sahrie36@gmail.com', '6t9OeyGXpdbWWLc9b1UQvR1wd3hNMAMPyLdpxtvJxF9NNwLplGUvesjmlpONsahrie36@gmail.com', NULL, 0, '$2y$10$8/TwvWddyLqsbtVLACDOAe8z5A2Y8x/yk4CoQKG/5CBsFOlYa3gPW', 'default.png', NULL, NULL, '2022-01-18 06:10:30', '2022-01-27 17:48:34', 2, NULL, NULL),
 (40, 'jadir', 'jadirullah@gmail.com', NULL, '2022-01-25 02:51:23', 1, '$2y$10$2N90rEBZu5pzJXkB/y1qS.RQToD51FVAyL0LMQ4fjEaRCa12.o3/e', 'default.png', NULL, NULL, '2022-01-25 02:48:52', '2022-01-27 17:48:42', 2, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vassels`
+--
+
+CREATE TABLE `vassels` (
+  `id` bigint(20) NOT NULL,
+  `nama_kapal` varchar(225) NOT NULL,
+  `gt` varchar(225) NOT NULL,
+  `loa` varchar(225) NOT NULL,
+  `photo` varchar(225) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vassels`
+--
+
+INSERT INTO `vassels` (`id`, `nama_kapal`, `gt`, `loa`, `photo`, `created_at`, `updated_at`, `status`) VALUES
+(13, 'siguntang', '9000', '12000', '050511-apple_gradient.png', '2022-07-25 22:05:11', '2022-07-25 22:05:11', 0),
+(14, 'kelud', '9000', '12000', '044717-linux-mint-logo.svg', '2022-07-25 21:47:17', '2022-07-25 21:47:17', 0),
+(15, 'juru semeru', '100', '2000', '064745-apple_grey.png', '2022-07-25 23:49:43', '2022-07-25 23:49:43', 0),
+(16, 'serimau', '100', '200', '065020-cepot.jpg', '2022-07-26 07:55:45', '2022-07-26 07:55:45', 0),
+(17, 'km. bukit raya', '5200', '900', '145831-apple_grey.png', '2022-07-26 07:58:31', '2022-07-26 07:58:31', 1),
+(18, 'km. bukit raya', '200000', '9000', '150412-cepot.jpg', '2022-07-26 08:04:27', '2022-07-26 08:04:27', 0),
+(19, 'km. situ baruang', '21', '22', '043054-cepot.jpg', '2022-07-27 21:30:54', '2022-07-27 21:30:54', 1),
+(20, 'km. bukir raya', '100', '110', '043144-apple_gradient.png', '2022-07-27 21:31:48', '2022-07-27 21:31:48', 0);
 
 --
 -- Indexes for dumped tables
@@ -930,6 +1285,18 @@ ALTER TABLE `kk_infobox`
 -- Indexes for table `kk_ms_contact`
 --
 ALTER TABLE `kk_ms_contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kk_ms_from_to`
+--
+ALTER TABLE `kk_ms_from_to`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kk_ms_product`
+--
+ALTER TABLE `kk_ms_product`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -984,48 +1351,22 @@ ALTER TABLE `kk_testimonial`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `kk_tr_bill_of_lading`
+--
+ALTER TABLE `kk_tr_bill_of_lading`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kk_tr_manifest`
+--
+ALTER TABLE `kk_tr_manifest`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `model_has_permissions`
---
-ALTER TABLE `model_has_permissions`
-  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
-  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
-
---
--- Indexes for table `model_has_roles`
---
-ALTER TABLE `model_has_roles`
-  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
-  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
-
---
--- Indexes for table `ms_agama`
---
-ALTER TABLE `ms_agama`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ms_bank`
---
-ALTER TABLE `ms_bank`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ms_users_description`
---
-ALTER TABLE `ms_users_description`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
 
 --
 -- Indexes for table `permissions`
@@ -1034,195 +1375,74 @@ ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `roles`
+-- Indexes for table `ship_agents`
 --
-ALTER TABLE `roles`
+ALTER TABLE `ship_agents`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role_has_permissions`
+-- Indexes for table `stevedoring`
 --
-ALTER TABLE `role_has_permissions`
-  ADD PRIMARY KEY (`permission_id`,`role_id`),
-  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
-
---
--- Indexes for table `setting`
---
-ALTER TABLE `setting`
+ALTER TABLE `stevedoring`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `vassels`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+ALTER TABLE `vassels`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `kk_blogs`
 --
 ALTER TABLE `kk_blogs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `kk_category`
+-- AUTO_INCREMENT for table `kk_ms_product`
 --
-ALTER TABLE `kk_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `kk_ms_product`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `kk_client`
+-- AUTO_INCREMENT for table `kk_tr_bill_of_lading`
 --
-ALTER TABLE `kk_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `kk_tr_bill_of_lading`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `kk_infobox`
+-- AUTO_INCREMENT for table `kk_tr_manifest`
 --
-ALTER TABLE `kk_infobox`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `kk_ms_contact`
---
-ALTER TABLE `kk_ms_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `kk_notification`
---
-ALTER TABLE `kk_notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `kk_pages`
---
-ALTER TABLE `kk_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `kk_slideshows`
---
-ALTER TABLE `kk_slideshows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `kk_subscribe`
---
-ALTER TABLE `kk_subscribe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `kk_tags`
---
-ALTER TABLE `kk_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `kk_testimonial`
---
-ALTER TABLE `kk_testimonial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `ms_agama`
---
-ALTER TABLE `ms_agama`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `ms_bank`
---
-ALTER TABLE `ms_bank`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `ms_users_description`
---
-ALTER TABLE `ms_users_description`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+ALTER TABLE `kk_tr_manifest`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT for table `ship_agents`
 --
-ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `ship_agents`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `setting`
+-- AUTO_INCREMENT for table `stevedoring`
 --
-ALTER TABLE `setting`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+ALTER TABLE `stevedoring`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `vassels`
 --
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `kk_blog_descriptions`
---
-ALTER TABLE `kk_blog_descriptions`
-  ADD CONSTRAINT `blog_descriptions_blog_id_foreign` FOREIGN KEY (`blog_id`) REFERENCES `kk_blogs` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `kk_page_descriptions`
---
-ALTER TABLE `kk_page_descriptions`
-  ADD CONSTRAINT `page_descriptions_page_id_foreign` FOREIGN KEY (`page_id`) REFERENCES `kk_pages` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `kk_slideshow_descriptions`
---
-ALTER TABLE `kk_slideshow_descriptions`
-  ADD CONSTRAINT `slideshow_descriptions_slideshow_id_foreign` FOREIGN KEY (`slideshow_id`) REFERENCES `kk_slideshows` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `model_has_permissions`
---
-ALTER TABLE `model_has_permissions`
-  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `model_has_roles`
---
-ALTER TABLE `model_has_roles`
-  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `role_has_permissions`
---
-ALTER TABLE `role_has_permissions`
-  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+ALTER TABLE `vassels`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
