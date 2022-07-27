@@ -115,7 +115,7 @@ $assets = asset('template_assets');
         </div>
     </div>
 
-    <form method="POST" action="/dashboard/manifest/bill-of-lading" id="form-bill-of-lading">
+    <form method="POST" action="/dashboard/bill-of-lading" id="form-bill-of-lading">
         <div class="card card-custom">
             <div class="card-header">
                 <span class="font-weight-bold">Bill Of Lading</span>
@@ -138,7 +138,12 @@ $assets = asset('template_assets');
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="">Customer Id</label>
-                            <input type="text" name="customer_id" class="form-control customer-id-input">
+                            <select name="customer_id" class="form-control customer-id-input">
+                                <option value="">Choose Customer</option>
+                                @foreach($customer as $item)
+                                    <option value="{{ $item->id }}">{{ $item->customer_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 

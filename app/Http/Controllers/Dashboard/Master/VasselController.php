@@ -81,6 +81,7 @@ class VasselController extends Controller
             $data->nama_kapal = $nama_kapal;
             $data->gt = $gt;
             $data->loa = $loa;
+            $data->status = 1;
 
             $data->save();
         }

@@ -255,7 +255,7 @@ function reload_table() {
                 Listing Bill Of Lading
             </h3>
 
-            <a href="/dashboard/manifest/bill-of-lading/{{ $id_manifest }}/create" class="btn btn-success">Add Bill Of Leading</a>
+            <a href="/dashboard/bill-of-lading/{{ $id_manifest }}/create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Add Bill Of Leading</a>
             
             <table id="table-BL" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>

@@ -20,7 +20,7 @@ class ShipAgentController extends Controller
     public function index()
     {
         //
-        $ship_agent = ShipAgent::all();
+        $ship_agent = ShipAgent::select('id', 'nama_perusahaan', 'telp', 'alamat', 'email')->orderBy("id", "Desc")->get();
 
         $controller = $this->controller;
 

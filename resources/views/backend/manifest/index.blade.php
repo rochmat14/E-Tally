@@ -83,6 +83,8 @@ $(document).ready(function() {
                 "render": function ( data, type, row ) {
                     var editUrl = row['editUrl'];
                     var deleteUrl = row['deleteUrl'];
+
+                    // bill_of_lading_controller
                     var viewUrl = row['viewUrl'];
 
                     return `

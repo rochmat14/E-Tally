@@ -9,6 +9,20 @@ Route::post('/bill-of-lading','Master\VasselController@store');
 Route::put('/bill-of-lading/{id}','Master\VasselController@update');
 Route::delete('/bill-of-lading/{id}','Master\VasselController@destroy');
 
+
+
+//packing list on product
+Route::get('/Dashboard/product/{id}/create','Dashboard\Transaction\ProductController@create');
+Route::post('/Dashboard/product','Dashboard\Transaction\ProductController@store');
+Route::get('/Dashboard/product/{id}/edit','Dashboard\Transaction\ProductController@edit');
+Route::put('/Dashboard/product/{id}','Dashboard\Transaction\ProductController@update');
+
+Route::post('/bill-of-lading','Master\VasselController@store');
+Route::put('/bill-of-lading/{id}','Master\VasselController@update');
+Route::delete('/bill-of-lading/{id}','Master\VasselController@destroy');
+
+
+
 Route::group(array('prefix' =>LaravelLocalization::setLocale() .'/dashboard', 'namespace' => 'Dashboard', 'middleware' => ['adminauth']), function () {
 	
 	// Dashboard 
@@ -89,12 +103,14 @@ Route::group(array('prefix' =>LaravelLocalization::setLocale() .'/dashboard', 'n
 
 
 	// manifest
+	Route::get('/manifest/create','Transaction\VasselController@create');
+	Route::get('/manifest/{id}/edit','Transaction\ManifestController@edit');
 	Route::put('/manifest/{id}','Transaction\ManifestController@update');
-	Route::get('/manifest/create','Transaction\VasselController@create')->name('manifest.create');
-	Route::get('/manifest/bill-of-lading/{id}/create','Transaction\BillOfLadingController@create');
-	Route::post('/manifest/bill-of-lading','Transaction\BillOfLadingController@store');
-	Route::get('/manifest/bill-of-lading/{id}/edit','Transaction\BillOfLadingController@edit');
-	Route::put('/manifest/bill-of-lading/{id}','Transaction\BillOfLadingController@update');
+
+	Route::get('/bill-of-lading/{id}/create','Transaction\BillOfLadingController@create');
+	Route::post('/bill-of-lading','Transaction\BillOfLadingController@store');
+	Route::get('/bill-of-lading/{id}/edit','Transaction\BillOfLadingController@edit');
+	Route::put('/bill-of-lading/{id}','Transaction\BillOfLadingController@update');
 
 
 	// ship agend

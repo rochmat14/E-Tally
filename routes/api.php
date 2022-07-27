@@ -31,5 +31,12 @@ Route::post('get_product/detail/{id}/process', 'API\ProductController@process');
 
 Route::get('get_from_to', 'API\LocatinController@index');
 
+// blog api
+Route::get('/get_blog', 'API\BlogController@index');
+Route::post('/get_blog', 'API\BlogController@store');
+Route::get('/get_blog/{slug}', 'API\BlogController@show');
+Route::put('/get_blog/{id}', 'API\BlogController@update');
+Route::delete('/get_blog/{id}', 'API\BlogController@destroy');
+
 
 

@@ -117,9 +117,10 @@ $assets = asset('template_assets');
                             return `
 
                         
-                            <a href='javascript:void(0)' class="btn btn-info" onclick=edited("${editUrl}") title="Edit">
+                            <a href='${editUrl}' class="btn btn-info" title="Edit">
                                 <i class="fa fa-edit"></i> Edit
                             </a>
+                            
                     
 
                         
@@ -588,8 +589,11 @@ $assets = asset('template_assets');
                                             </div>
 
 
-                                            <button class="btn btn-success waves-effect waves-light" onclick="add()"><i
-                                                    class="glyphicon glyphicon-plus"></i>Tambah Item Product</button>
+                                            {{-- <button class="btn btn-success waves-effect waves-light" onclick="add()"><i
+                                                    class="glyphicon glyphicon-plus"></i>Tambah Item Product</button> --}}
+                                                
+                                                <a href="/Dashboard/product/{{ $id_bl }}/create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Tambah Item Product</a>
+
                                             <button class="btn waves-effect waves-light btn-secondary"
                                                 onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i>
                                                 Reload</button>

@@ -202,8 +202,12 @@ $assets = asset('template_assets');
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="">Id Customor</label>
-                            <input type="text" value="{{ $manifest->id_customer }}" name="id_customer"
-                                class="form-control id-customer-input">
+                            <select name="id_customer" class="form-control id-customer-input">
+                                <option value="">Choose Customer</option>
+                                @foreach($customer as $item)
+                                    <option value="{{ $item->id }}"  @if ($item->id == $manifest->id_customer) {{ 'selected' }} @endif>{{ $item->customer_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 

@@ -116,7 +116,7 @@ $assets = asset('template_assets');
     </div>
 
 
-    <form method="POST" action="/dashboard/manifest/bill-of-lading/{{ $bill_of_landing->id }}" id="form-vassel">
+    <form method="POST" action="/dashboard/bill-of-lading/{{ $bill_of_landing->id }}" id="form-bill-of-lading">
         <div class="card card-custom">
             <div class="card-header">
                 <span class="font-weight-bold">Bill Of Lading</span>
@@ -125,71 +125,61 @@ $assets = asset('template_assets');
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="">Id Manfest</label>
+                        <label for="">Id Manifest</label>
                         <input type="text" readonly name="id_manfest" value="{{ $bill_of_landing->id_manfest }}" class="form-control id-manifest-input">
                     </div>
                     
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="">Kode Bill Of Lading</label>
-                            <div class="input-group">
-                                <input type="text" value="{{ $bill_of_landing->kode_bill_of_lading }}"
-                                    name="kode_bill_of_lading" class="form-control kode-bill-of-lading-input">
-                            </div>
+                            <input type="text" value="{{ $bill_of_landing->kode_bill_of_lading }}" name="kode_bill_of_lading" class="form-control kode-bill-of-lading-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Customer Id</label>
-                            <div class="input-group">
-                                <input type="text" value="{{ $bill_of_landing->customer_id }}" name="customer_id" class="form-control customer-id-input">
-                            </div>
+                            <label for="">Customer</label>
+                            <select name="customer_id" class="form-control customer-id-input">
+                                <option value="">Choose Customer</option>
+                                @foreach($customer as $item)
+                                    <option value="{{ $item->id }}" @if($item->id == $bill_of_landing->customer_id ) {{ "selected" }} @endif>{{ $item->customer_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="">Transfer To</label>
-                            <div class="input-group">
-                                <input type="text" value="{{ $bill_of_landing->transfer_to }}" name="transfer_to" class="form-control transfer-to-input">
-                            </div>
+                            <input type="text" value="{{ $bill_of_landing->transfer_to }}" name="transfer_to" class="form-control transfer-to-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="">Ship Name</label>
-                            <div class="input-group">
-                                <input type="text" value="{{ $bill_of_landing->ship_name }}" name="ship_name" class="form-control ship-name-input">
-                            </div>
+                            <input type="text" value="{{ $bill_of_landing->ship_name }}" name="ship_name" class="form-control ship-name-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="">Country</label>
-                            <div class="input-group">
-                                <input type="text" value="{{ $bill_of_landing->country }}" name="country" class="form-control country-input">
-                            </div>
+                            <input type="text" value="{{ $bill_of_landing->country }}" name="country" class="form-control country-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="">Date Of Bill</label>
-                            <div class="input-group">
-                                <input type="date" value="{{ $bill_of_landing->date_of_bill }}" name="date_of_bill" class="form-control date-of-bill-input">
-                            </div>
+                            <input type="date" value="{{ $bill_of_landing->date_of_bill }}" name="date_of_bill" class="form-control date-of-bill-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="">Telly Man</label>
-                            <div class="input-group">
-                                <input type="text" value="{{ $bill_of_landing->telly_man }}" name="telly_man" class="form-control telly-man-input">
-                            </div>
+                            <input type="text" value="{{ $bill_of_landing->telly_man }}" name="telly_man" class="form-control telly-man-input">
                         </div>
                     </div>
                 </div>
@@ -211,7 +201,7 @@ $assets = asset('template_assets');
                     </div>
                 </div>
             </div>
-    </form>
+        </form>
 
     </div>
     </div>

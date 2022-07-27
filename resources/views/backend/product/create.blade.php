@@ -22,135 +22,119 @@ $assets = asset('template_assets');
 @section('js_scripts')
     <script type="text/javascript">
         // validasi form admin
-        $('form#form-manifest').on('submit', function(event) {
+        $('form#form-product').on('submit', function(event) {
             //Add validation rule for dynamically generated name fields
-            $('.kode-manifest-input').each(function() {
+
+            $('.product-code-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Kode Manifest harus di isi",
+                        required: "Porduct Code harus di isi",
                     }
                 });
             });
 
-            $('.country-input').each(function() {
+            $('.product-name-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Country harus di isi",
+                        required: "Product Name harus di isi",
                     }
                 });
             });
 
-            $('.id-customer-input').each(function() {
+            $('.bill-of-lading-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Customer harus di isi",
+                        required: "Bill Of Lading Id  harus di isi",
                     }
                 });
             });
 
-            $('.date-of-input').each(function() {
+            $('.product-satuan-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Date Of harus di isi",
+                        required: "Product Satuan harus di isi",
                     }
                 });
             });
 
-            $('.port-name-input').each(function() {
+            $('.product-category-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Port Name harus di isi",
+                        required: "Product Category harus di isi",
                     }
                 });
             });
 
-            $('.vassel-input').each(function() {
+            $('.product-categor-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Vassel harus di isi",
+                        required: "Product Category harus di isi",
                     }
                 });
             });
 
-            $('.ship-agent-input').each(function() {
+            $('.total-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Ship Agent harus di isi",
+                        required: "Total harus di isi",
                     }
                 });
             });
 
-            $('.stevedoring-input').each(function() {
+            $('.status-product-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Stevedoring harus di isi",
+                        required: "Status Product harus di isi",
                     }
                 });
             });
 
-            $('.voy-input').each(function() {
+            $('.from-moving-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Voy harus di isi",
+                        required: "From Moving harus di isi",
                     }
                 });
             });
 
-            $('.berth-no-input').each(function() {
+            $('.to-moving-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Berth No harus di isi",
+                        required: "To Moving harus di isi",
                     }
                 });
             });
 
-            $('.berthed-on-input').each(function() {
+            $('.description-moving-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Berthed On harus di isi",
+                        required: "Description Moving harus di isi",
                     }
                 });
             });
 
-            $('.berthed-on-hours-input').each(function() {
+            $('.image-moving-input').each(function() {
                 $(this).rules("add", {
                     required: true,
                     messages: {
-                        required: "Berthed On Hours harus di isi",
-                    }
-                });
-            });
-
-            $('.departed-on-input').each(function() {
-                $(this).rules("add", {
-                    required: true,
-                    messages: {
-                        required: "Departed On harus di isi",
-                    }
-                });
-            });
-
-            $('.departed-on-hours-input').each(function() {
-                $(this).rules("add", {
-                    required: true,
-                    messages: {
-                        required: "Departed On Hours harus di isi",
+                        required: "Imgage Moving harus di isi",
                     }
                 });
             });
         });
-        $("#form-manifest").validate();
+
+        $("#form-product").validate();
     </script>
 @endsection
 
@@ -172,12 +156,12 @@ $assets = asset('template_assets');
                         <span class="breadcrumb-icon"> Home</span></a>
                 </li>
                 <li class="breadcrumb-item"><a href="#">Level Otorisasi</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $controller }}</li>
             </ol>
         </div>
     </div>
 
-    <form method="POST" action="/dashboard/manifest/" id="form-manifest">
+    <form method="POST" action="/Dashboard/product" enctype="multipart/form-data" id="form-product">
         <div class="card card-custom">
             <div class="card-header">
                 <span class="font-weight-bold">{{ $title }}</span>
@@ -186,26 +170,38 @@ $assets = asset('template_assets');
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
+                        <label for="">Porduct Code</label>
+                        <input type="text" name="product_code" class="form-control product-code-input">
+                    </div>
+
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Kode Manifest</label>
-                            <input type="text" name="kode_manifest" class="form-control kode-manifest-input">
+                            <label for="">Product Name</label>
+                            <input type="text" name="product_name" class="form-control product-name-input">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" hidden>
+                        <div class="form-group">
+                            <label for="">Bill Of Lading Id</label>
+                            <input type="text" name="bill_of_lading_id" value="{{ $bill_of_lading_id }}" class="form-control bill-of-lading-id-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Country</label>
-                            <input type="text" name="country" class="form-control country-input">
+                            <label for="">Product Satuan</label>
+                            <input type="text" name="product_satuan" class="form-control product-satuan-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Customer</label>
-                            <select name="id_customer" class="form-control id-customer-input">
-                                <option value="">Choose Customer</option>
-                                @foreach($customer as $item)
-                                    <option value="{{ $item->id }}">{{ $item->customer_name }}</option>
+                            <label for="">Product Category</label>
+                            <select name="product_category" class="form-control product-category-input">
+                                <option value="">Choose Product Category</option>
+                                @foreach($product_category as $item)
+                                        <option value="{{ $item->id }}">{{ $item->category_product }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -213,93 +209,48 @@ $assets = asset('template_assets');
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Date Of</label>
-                            <input type="date" name="date_of" class="form-control date-of-input">
+                            <label for="">total</label>
+                            <input type="text" name="total" class="form-control total-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Port Name</label>
-                            <input type="text" name="port_name" class="form-control port-name-input">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="">Vassel</label>
-                            <select name="vassel_id" id="" class="form-control vassel-input">
-                                <option value="">Choose Vassel</option>
-                                @foreach ($vassel as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_kapal }}</option>
-                                @endforeach
+                            <label for="">Status Product</label>
+                            <select name="status_product" class="form-control status-product-input">
+                                <option value="">Choose Status Category</option>
+                                <option value="watlist">Watlist</option>
+                                <option value="proses">Proses</option>
+                                <option value="finish">Finish</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Ship Agent</label>
-                            <select name="ship_agent_id" id="" class="form-control ship-agent-input">
-                                <option value="">Choose Ship Agent</option>
-                                @foreach ($ship_agent as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_perusahaan }}</option>
-                                @endforeach
-                            </select>
+                            <label for="">From Moving</label>
+                            <input type="text" name="from_moving" class="form-control from-moving-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Stevedoring</label>
-                            <select name="stevedoring_id" id="" class="form-control stevedoring-input">
-                                <option value="">Choose Stevedoring</option>
-                                @foreach ($stevedoring as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_perusahaan }}</option>
-                                @endforeach
-                            </select>
+                            <label for="">To Moving</label>
+                            <input type="text" name="to_moving" class="form-control to-moving-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Voy</label>
-                            <input type="text" name="voy" class="form-control voy-input">
+                            <label for="">Description Moving</label>
+                            <input type="text" name="description_moving" class="form-control description-moving-input">
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Berth No</label>
-                            <input type="text" name="berth_no" class="form-control berth-no-input">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="">Berthed On</label>
-                            <input type="text" name="berthed_on" class="form-control berthed-on-input">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="">Berthed On Hours</label>
-                            <input type="time" name="berthed_on_hours" class="form-control berthed-on-hours-input">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="">Departed On</label>
-                            <input type="date" name="departed_on" class="form-control departed-on-input">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="">Departed On Hours</label>
-                            <input type="time" name="departed_on_hours" class="form-control departed-on-hours-input">
+                            <label for="">Image Moving</label>
+                            <input type="file" name="image_moving" class="form-control image-moving-input">
                         </div>
                     </div>
                 </div>
@@ -314,7 +265,7 @@ $assets = asset('template_assets');
                             </button>
                         </div>
                         <div class="col-sm-6">
-                            <a href="{{ url('/dashboard/manifest') }}" class="btn btn-danger btn-block">
+                            <a href="{{ url('/dashboard/bill_of_lading/'.$bill_of_lading_id) }}" class="btn btn-danger btn-block">
                                 <span class="fa fa-window-close"></span> Cancel
                             </a>
                         </div>
@@ -322,6 +273,7 @@ $assets = asset('template_assets');
                 </div>
             </div>
     </form>
+
     </div>
     </div>
     </div>

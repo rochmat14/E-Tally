@@ -139,7 +139,7 @@ $assets = asset('template_assets');
                     </button>
                 </div>
                 <div class="col-sm-6">
-                    <a href="{{ url('/vassel') }}" class="btn btn-danger btn-block">
+                    <a href="{{ url('/dashboard/ship-agent') }}" class="btn btn-danger btn-block">
                         <span class="fa fa-window-close"></span> Cancel
                     </a> 
                 </div>

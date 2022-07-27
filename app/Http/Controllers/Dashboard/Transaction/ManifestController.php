@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\ManifestModel;
 use App\Model\BillOfLaddingModel;
+use App\Model\Customer;
 use App\Model\Vassel;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
@@ -49,13 +50,15 @@ class ManifestController extends Controller
 
         $title = $this->title;
         
+        $customer = Customer::select('id', 'customer_name')->get();
+        
         $vassel = Vassel::select('id', 'nama_kapal')->get();
 
         $ship_agent = ShipAgent::select('id', 'nama_perusahaan')->get();
 
         $stevedoring = Stevedoring::select('id', 'nama_perusahaan')->get();
         
-        return view('backend.manifest.create', compact('vassel', 'ship_agent', 'stevedoring', 'controller', 'title'));
+        return view('backend.manifest.create', compact('vassel', 'ship_agent', 'customer', 'stevedoring', 'controller', 'title'));
     }
 
     public function store(Request $request){
@@ -184,6 +187,8 @@ class ManifestController extends Controller
     public function edit($id){
         $manifest = ManifestModel::find($id);
 
+        $customer = Customer::select('id', 'customer_name')->get();
+        
         $vassel = Vassel::select('id', 'nama_kapal')->get();
 
         $ship_agent = ShipAgent::select('id', 'nama_perusahaan')->get();
@@ -194,7 +199,7 @@ class ManifestController extends Controller
 
         $title = $this->title;
 
-        return view('backend.manifest.edit', compact('manifest', 'vassel', 'ship_agent', 'stevedoring', 'controller', 'title'));
+        return view('backend.manifest.edit', compact('manifest', 'vassel', 'customer', 'ship_agent', 'stevedoring', 'controller', 'title'));
         // return $vassel;
     }
 

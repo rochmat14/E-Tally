@@ -12,8 +12,7 @@ use App\Model\Satuan;
 use App\Model\ProductCategory;
 
 use App\Http\Requests\Backend\ProductRequest;
-
-
+use App\Model\Customer;
 
 class BillOfLadingController extends Controller
 {
@@ -24,10 +23,12 @@ class BillOfLadingController extends Controller
 
     public function create($id_manifest){
         
+        $customer = Customer::select('id', 'customer_name')->get();
+        
         $controller = $this->controller;
         $title = $this->title;
         
-        return view('backend.bill_of_lading.create', compact('id_manifest', 'controller', 'title'));
+        return view('backend.bill_of_lading.create', compact('id_manifest', 'customer', 'controller', 'title'));
     }
 
     public function store(Request $request){
@@ -84,12 +85,15 @@ class BillOfLadingController extends Controller
     }
 
     public function edit($id){
+    
+        $bill_of_landing = BillOfLaddingModel::find($id);
+        
+        $customer = Customer::select('id', 'customer_name')->get();
+
         $controller = $this->controller;
         $title = $this->title;
-        
-        $bill_of_landing = BillOfLaddingModel::find($id);
 
-        return view('backend.bill_of_lading.edit', compact('bill_of_landing', 'controller', 'title'));
+        return view('backend.bill_of_lading.edit', compact('bill_of_landing', 'customer', 'controller', 'title'));
     }
 
     public function getData(Request $request,$id)
@@ -144,7 +148,7 @@ class BillOfLadingController extends Controller
 
                 // return $row->id;
 
-                return '/dashboard/manifest/bill-of-lading/'. $row->id. '/edit';
+                return '/dashboard/bill-of-lading/'. $row->id. '/edit';
 
             })
             ->addColumn('viewUrl', function ($row) {
@@ -159,6 +163,7 @@ class BillOfLadingController extends Controller
 
 
     public function show($id){
+        // menadapatkan id bill-of-lading
         $id_bl = $id;
 
         $bl_data = BillOfLaddingModel::select(
@@ -236,7 +241,7 @@ class BillOfLadingController extends Controller
                 return url('images/barcode-sample.png');
             })
             ->addColumn('editUrl', function ($row) {
-                return $row->id;
+                return '/Dashboard/product/'.$row->id.'/edit';
             })
         
             ->make();
